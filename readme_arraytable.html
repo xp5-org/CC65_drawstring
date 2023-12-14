@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binary Tables</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      float: left;
+      margin-right: 20px;
+    }
+    td {
+      width: 20px;
+      height: 20px;
+      border: 1px solid black;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .zero {
+      background-color: white;
+    }
+    .one {
+      background-color: #333; /* dark grey color */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+ 
+
+ <table>
+  <caption>input</caption>
+  <tbody>
+<tr><td class='zero'>0x3F</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x3E</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x3F</td></tr>
+<tr><td class='zero'>0x00</td></tr>
+</tbody>
+</table>
+
+
+
+  <table>
+  <caption>Font original</caption>
+  <tbody>
+<tr>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+</tr>
+<tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+</tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+</tr>
+<tr>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+</tr>
+<tr>
+
+
+<tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+</tr>
+
+
+<tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+</tr>
+<tr>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+</tr>
+<tr>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+</tr>
+  </tbody>
+</table>
+
+
+  <table>
+  <caption>Output in my code</caption>
+  <tbody>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+    </tr>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+    </tr>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+    </tr>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+    </tr>
+    <tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+    </tr>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td><td class='zero'>0</td>
+    </tr>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='one'>1</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+    </tr>
+
+    <tr>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+<td class='zero'>0</td>
+    </tr>
+
+
+
+
+
+
+
+  </tbody>
+</table>
+
+
+ <table>
+  <caption>output</caption>
+  <tbody>
+<tr><td class='zero'>0xFC</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x7C</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0x66</td></tr>
+<tr><td class='zero'>0xFC</td></tr>
+<tr><td class='zero'>0x00</td></tr>
+</tbody>
+</table>
+
+
+
+</body>
+</html>
