@@ -7,7 +7,7 @@ Using CC65 tgi_bar - i have created a demo to show how large scaled fonts can be
         This function iterates over an input string, manipulating the starting X and Y positions, and subsequently draws characters across the screen. However, it's worth noting that it might scramble the screen if drawing near the screen's edges or bottom.
 
 `drawchar:`
-        Responsible for handling an 8x8 grid of data for a single character. Based on the value of the scalefactor, it either prints an 8x8 grid for scalefactor - 1 or, for scalefactor - 4, draws a larger 16x16 sized character on the screen. This is achieved using the tgi_bar function, which employs a rapid fill method utilizing a character block, known to be faster than setting pixels.
+        Responsible for handling an 8x8 grid of data for a single character. Based on the value of the scalefactor, it either prints an 8x8 grid for scalefactor - 1 or, for scalefactor - 4, draws a larger 32x32 sized character on the screen. This is achieved using the tgi_bar function, which employs a rapid fill method utilizing a character block, known to be faster than setting pixels.
 
 `findcharindex:`
         This function is tasked with converting the current character string slice and then returning the appropriate index position.
