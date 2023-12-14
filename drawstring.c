@@ -106,32 +106,32 @@ int main() {
   
     do {  // DEMO text wall
        for (i = 0; i < 180; i+=40){
-   	drawstring(alphabet, mystring, 2, i, 2); // character array, string, startX, startY, scalefactor
-   	drawstring(alphabet, mystring, 2, i+20, 1);
-	}
+           drawstring(alphabet, mystring, 2, i, 2); // character array, string, startX, startY, scalefactor
+           drawstring(alphabet, mystring, 2, i+20, 1);
+        }
     someDelay();
-  	
-	//DEMO large
+          
+    //DEMO large
     tgi_clear();
-	drawstring(alphabet, "A", 2, 1, 14);
-	drawstring(alphabet, "B", 120, 60, 14); 
+    drawstring(alphabet, "A", 2, 1, 14);
+    drawstring(alphabet, "B", 120, 60, 14); 
     someDelay();
   
-	//DEMO jumbo
-  	tgi_clear();
-  	drawstring(alphabet, "A", 50, 20, 24); 
+    //DEMO jumbo
+    tgi_clear();
+    drawstring(alphabet, "A", 50, 20, 24); 
     someDelay();
       
     //DEMO jumbo
-  	tgi_clear();
-  	drawstring(alphabet, "B", 50, 20, 24); 
+    tgi_clear();
+    drawstring(alphabet, "B", 50, 20, 24); 
     someDelay();
       
     //DEMO jumbo
-  	tgi_clear();
-  	drawstring(alphabet, "C", 50, 20, 24); 
+    tgi_clear();
+    drawstring(alphabet, "C", 50, 20, 24); 
     someDelay();
-   	
+           
     //reset
     tgi_clear();
       
