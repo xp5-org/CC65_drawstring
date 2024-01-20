@@ -29,17 +29,18 @@ const unsigned short alphabet[37][4] = {
     {0b1001, 0b1001, 0b1001, 0b0110}, // W
     {0b0000, 0b1010, 0b0100, 0b1010}, // X
     {0b1001, 0b0110, 0b0010, 0b0010}, // Y
-    {0b1111, 0b0100, 0b0010, 0b1111},  // Z
-    {0b0110,0b1010,0b1010,0b1100}, //0
-    {0b0010,0b0110,0b0010,0b0010}, //1
-    {0b0110,0b0010,0b0100,0b0110}, //2
-    {0b0110,0b0011,0b0001,0b0110}, //3
-    {0b0101,0b0111,0b0001,0b0001}, //4
-    {0b0110,0b0100,0b0010,0b0110}, //5
-    {0b0100,0b0110,0b0101,0b0011}, //6
-    {0b0111,0b0101,0b0001,0b0001}, //7
-    {0b0111,0b0101,0b0111,0b0111}, //8
-    {0b0110,0b0101,0b0011,0b0001}, //9
+    {0b1111, 0b0100, 0b0010, 0b1111}, // Z
+    {0b0110, 0b1010, 0b1010, 0b1100}, // 0
+    {0b0010, 0b0110, 0b0010, 0b0010}, // 1
+    {0b0110, 0b0010, 0b0100, 0b0110}, // 2
+    {0b0110, 0b0011, 0b0001, 0b0110}, // 3
+    {0b0101, 0b0111, 0b0001, 0b0001}, // 4
+    {0b0110, 0b0100, 0b0010, 0b0110}, // 5
+    {0b0100, 0b0110, 0b0101, 0b0011}, // 6
+    {0b0111, 0b0101, 0b0001, 0b0001}, // 7
+    {0b0111, 0b0101, 0b0111, 0b0111}, // 8
+    {0b0110, 0b0101, 0b0011, 0b0001}, // 9
+
 };
 
 
@@ -57,19 +58,16 @@ int findcharindex(char character) {
 }
 
 
-void drawchar( 
-              char character, 
+void drawchar(char character, 
               unsigned int startX, 
-              unsigned char startY ) {
+              unsigned char startY) {
   
     int index = findcharindex(character);
     if (index != -1) { // draw the character at the specified index
         const unsigned short* nextchar = alphabet[index];
         int x, y;
         unsigned int scaledX, scaledY; 
-      //unsigned int scaledX2, scaledY2;
-
-        static const unsigned char Palette[3] = { TGI_COLOR_WHITE, TGI_COLOR_BLACK };
+        // static const unsigned char Palette[3] = { TGI_COLOR_WHITE, TGI_COLOR_BLACK };
         //tgi_setpalette(Palette);
 
         for (y = 0; y < 4; y++) {   // iterate over 4 Y-axis pixels (rows)
@@ -77,8 +75,6 @@ void drawchar(
                 if ((*nextchar) & (1 << (3 - x))) {
                     scaledX = startX + x;
                     scaledY = startY + y; 
-
-                    // draw rectangle using tgi_bar
                     tgi_setpixel(scaledX, scaledY);
                 }
             }
@@ -91,8 +87,10 @@ void drawchar(
 
 
 
-void drawstring(const char* str, unsigned int startX, 
+void drawstring(const char* str, 
+                unsigned int startX, 
                 unsigned char startY) {
+                
     while (*str != '\0') {
         drawchar(*str, startX, startY);
         startX += 5; // each character takes 8 pixels width
@@ -115,12 +113,12 @@ void drawWrappedString(const char* text,
         if (*text == ' ') { //if the current char is a space we jump 6 pixels on Y axis
             currentWordCopy[currentLength] = '\0'; // Null-terminate the string
             if (currentLineStartX + (currentLength * 5) > startX + maxLineLength * 5 ) {
-                // if adding current word would exceed maxLineLength, start a new line
-                startY += 6 ; //advance y axis if current char is ' ' space
+                // If adding the current word would exceed maxLineLength, start a new line
+                startY += 5 ; //advance y axis if current char is ' ' space
                 currentLineStartX = startX;
             }
             drawstring(currentWordCopy, currentLineStartX, startY);
-            currentLineStartX += currentLength * 5 + 3; // move y for space 3*sf val
+            currentLineStartX += currentLength * 5 + 2; // 2 pixel spaces between chars
             currentLength = 0;
         } else {
             currentWordCopy[currentLength] = *text;
@@ -134,8 +132,8 @@ void drawWrappedString(const char* text,
     if (currentLength > 0) {
         currentWordCopy[currentLength] = '\0'; // Null-terminate the string
         if (currentLineStartX + (currentLength * 5 ) > startX + maxLineLength * 5) {
-           //  if adding the last word would exceed maxLineLength, start a new line
-            startY += 8;
+           //  If adding the last word would exceed maxLineLength, start a new line
+            startY += 5;
             currentLineStartX = startX;
         }
         drawstring(currentWordCopy, currentLineStartX, startY);
@@ -161,10 +159,10 @@ void someDelay() {
 int main() {
     int i;
     int kbhit_check;
- const char* myLongString1 = "NOW IS A TIME FOR ALL GOOD MEN TO COME TO THE AID OF THEIR COUNTRY. IN THIS MOMENT, WHERE THE FUTURE UNFOLDS BEFORE US, EACH INDIVIDUAL HOLDS THE POWER TO SHAPE THE DESTINY OF OUR NATION. LET US RISE TO THE CHALLENGES THAT CONFRONT US, UNITED IN OUR DIVERSITY, STRIVING FOR A COMMON PURPOSE. NOW IS NOT THE MOMENT FOR APATHY, BUT FOR ACTIVE ENGAGEMENT IN BUILDING A SOCIETY ROOTED IN JUSTICE, EQUALITY, AND FREEDOM. TOGETHER, WE CAN OVERCOME ADVERSITY, FOSTER UNITY, AND SECURE A BETTER TOMORROW. NOW, MORE THAN EVER, IS THE TIME FOR ALL GOOD MEN AND WOMEN TO STAND TOGETHER, EMBRACING THE RESPONSIBILITY THAT HISTORY BESTOWS UPON US, FOR IN OUR COLLECTIVE ACTIONS LIES THE STRENGTH OF OUR NATION";
- const char* myLongString2 = "WITH GREAT POWER COMES GREAT RESPONSIBILITY. THIS ADMONITION, ATTRIBUTED TO VARIOUS FIGURES THROUGH HISTORY, ENCOURAGES INDIVIDUALS TO RECOGNIZE THE IMPACT OF THEIR ACTIONS AND TO USE THEIR INFLUENCE WISELY. IT REMINDS US THAT POSSESSING ABILITIES, BE THEY INTELLECTUAL, SOCIAL, OR OTHERWISE, BRINGS A DUTY TO CONTRIBUTE TO THE GREATER GOOD OF SOCIETY. IN THE FACE OF OPPORTUNITY, LET US STRIVE TO UPLIFT AND EMPOWER THOSE AROUND US, FOSTERING A COMMUNITY BUILT ON MUTUAL RESPECT AND KINDNESS.";
-  const char* myLongString3 = "BE THE CHANGE YOU WISH TO SEE IN THE WORLD. THIS INSPIRING UTTERANCE, OFTEN ATTRIBUTED TO MAHATMA GANDHI, ENCOURAGES INDIVIDUALS TO TAKE INITIATIVE IN CREATING POSITIVE TRANSFORMATIONS. IT CALLS FOR SELF-AWARENESS, PROMPTING US TO REFLECT ON OUR VALUES AND ASPIRATIONS";
-  const char* mystring1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789012345678901234567890123456"; 
+const char* myLongString1 = "NOW IS A TIME FOR ALL GOOD MEN TO COME TO THE AID OF THEIR COUNTRY. IN THIS MOMENT, WHERE THE FUTURE UNFOLDS BEFORE US, EACH INDIVIDUAL HOLDS THE POWER TO SHAPE THE DESTINY OF OUR NATION. LET US RISE TO THE CHALLENGES THAT CONFRONT US, UNITED IN OUR DIVERSITY, STRIVING FOR A COMMON PURPOSE. NOW IS NOT THE MOMENT FOR APATHY, BUT FOR ACTIVE ENGAGEMENT IN BUILDING A SOCIETY ROOTED IN JUSTICE, EQUALITY, AND FREEDOM. TOGETHER, WE CAN OVERCOME ADVERSITY, FOSTER UNITY, AND SECURE A BETTER TOMORROW. NOW, MORE THAN EVER, IS THE TIME FOR ALL GOOD MEN AND WOMEN TO STAND TOGETHER, EMBRACING THE RESPONSIBILITY THAT HISTORY BESTOWS UPON US, FOR IN OUR COLLECTIVE ACTIONS LIES THE STRENGTH OF OUR NATION";
+const char* myLongString2 = "WITH GREAT POWER COMES GREAT RESPONSIBILITY. THIS ADMONITION, ATTRIBUTED TO VARIOUS FIGURES THROUGH HISTORY, ENCOURAGES INDIVIDUALS TO RECOGNIZE THE IMPACT OF THEIR ACTIONS AND TO USE THEIR INFLUENCE WISELY. IT REMINDS US THAT POSSESSING ABILITIES, BE THEY INTELLECTUAL, SOCIAL, OR OTHERWISE, BRINGS A DUTY TO CONTRIBUTE TO THE GREATER GOOD OF SOCIETY. IN THE FACE OF OPPORTUNITY, LET US STRIVE TO UPLIFT AND EMPOWER THOSE AROUND US, FOSTERING A COMMUNITY BUILT ON MUTUAL RESPECT AND KINDNESS.";
+const char* myLongString3 = "BE THE CHANGE YOU WISH TO SEE IN THE WORLD. THIS INSPIRING UTTERANCE, OFTEN ATTRIBUTED TO MAHATMA GANDHI, ENCOURAGES INDIVIDUALS TO TAKE INITIATIVE IN CREATING POSITIVE TRANSFORMATIONS. IT CALLS FOR SELF-AWARENESS, PROMPTING US TO REFLECT ON OUR VALUES AND ASPIRATIONS";
+const char* mystring1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789012345678901234567890123456"; 
       // Install TGI
     tgi_install(tgi_static_stddrv); 
     tgi_init(); // init tgi
