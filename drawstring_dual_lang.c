@@ -267,7 +267,7 @@ int main() {
  const char* myLongString2 = "WITH GREAT POWER COMES GREAT RESPONSIBILITY. THIS ADMONITION, ATTRIBUTED TO VARIOUS FIGURES THROUGH HISTORY, ENCOURAGES INDIVIDUALS TO RECOGNIZE THE IMPACT OF THEIR ACTIONS AND TO USE THEIR INFLUENCE WISELY. IT REMINDS US THAT POSSESSING ABILITIES, BE THEY INTELLECTUAL, SOCIAL, OR OTHERWISE, BRINGS A DUTY TO CONTRIBUTE TO THE GREATER GOOD OF SOCIETY. IN THE FACE OF OPPORTUNITY, LET US STRIVE TO UPLIFT AND EMPOWER THOSE AROUND US, FOSTERING A COMMUNITY BUILT ON MUTUAL RESPECT AND KINDNESS.";
   const char* myLongString3 = "BE THE CHANGE YOU WISH TO SEE IN THE WORLD. THIS INSPIRING UTTERANCE, OFTEN ATTRIBUTED TO MAHATMA GANDHI, ENCOURAGES INDIVIDUALS TO TAKE INITIATIVE IN CREATING POSITIVE TRANSFORMATIONS. IT CALLS FOR SELF-AWARENESS, PROMPTING US TO REFLECT ON OUR VALUES AND ASPIRATIONS";
   const char* mystring1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./"; 
-    const char* mystring2 = "ELIT SED DO EIUSMOD TEMPOR INCIDIDUNT";
+  const char* mystring2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123";
     // Install TGI
     tgi_install(tgi_static_stddrv); 
     tgi_init(); // init tgi
@@ -280,9 +280,9 @@ int main() {
     }
   
 
-drawWrappedString(2, myLongString1, 47, 2, 1); // character array, string, maxLineLength, startX, startY, scalefactor
-drawWrappedString(2, myLongString2, 32, 2, 80); // character array, string, maxLineLength, startX, startY, scalefactor
-drawWrappedString(2, myLongString3, 22, 180, 80); // character array, string, maxLineLength, startX, startY, scalefactor
+drawWrappedString(1, myLongString1, 63, 2, 1); // character array, string, maxLineLength, startX, startY, scalefactor
+drawWrappedString(1, myLongString2, 32, 2, 84); // character array, string, maxLineLength, startX, startY, scalefactor
+drawWrappedString(2, myLongString3, 22, 178, 84); // character array, string, maxLineLength, startX, startY, scalefactor
 
 
   
@@ -303,10 +303,9 @@ drawWrappedString(2, myLongString3, 22, 180, 80); // character array, string, ma
     do {  // DEMO text wall
        for (i = 0; i < 180; i+=15){
          linespacing = 18;
-          drawstring(2, mystring1, 2, i); // character array, string, startX, startY
-          // drawstring(alphabet, mystring2, 2, i+linespacing); // character array, string, startX, startY, scalefactor
+         drawstring(1, mystring1, 2, i); // character array, string, startX, startY
+          drawstring(2, mystring2, 2, i + 5); // character array, string, startX, startY
           
-         // drawstring(alphabet, mystring, 2, i+7, 1);
         }
     someDelay();
           
